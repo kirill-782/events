@@ -43,7 +43,7 @@ export class EventEmitter<Events extends EventMap = AnyEmmiter> {
   removeAllListeners<E extends keyof Events>(event?: E): this;
   removeListener<E extends keyof Events>(event: E, listener: Events[E]): this;
 
-  emit<E extends keyof Events>(event: E, ...args: Parameters<(Event & AnyEmmiter)[E]>): boolean;
+  emit<E extends keyof Events>(event: E, ...args: Parameters<(Events & AnyEmmiter)[E]>): boolean;
   // The sloppy `eventNames()` return type is to mitigate type incompatibilities - see #5
   eventNames(): (string | symbol)[];
   rawListeners<E extends keyof Events>(event: E): Events[E][];
